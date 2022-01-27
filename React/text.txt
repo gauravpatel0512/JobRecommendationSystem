@@ -1,0 +1,112 @@
+nodemon server/server.js
+
+npm start
+
+
+
+
+
+
+
+
+
+
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const morgan = require('morgan');
+// const path = require('path');
+// const router = express.Router();
+// const app = express();
+// const PORT = process.env.PORT || 8080;
+// const assert = require('assert');
+
+// //Mongodb Atlas
+
+// const MONGODB_URI = 'mongodb+srv://gauravpatel:Gauravpatel$512@cluster0.ddtgt.mongodb.net/Final_Year_Project?retryWrites=true&w=majority';
+
+// //Mongoose
+// mongoose.connect( MONGODB_URI || 'mongodb://localhost/Final_Year_Project', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// });
+
+// mongoose.connection.on('connected', () =>{
+//     console.log('Mongoose is Connected!!!');
+// });
+
+// // Router
+
+// router.get('/get-data', function(req, res, next){
+//     var resultArray = [];
+//     mongoose.connect(MONGODB_URI, function(err, db){
+//         assert.equal(null, err);
+//         var cursor = db.collection('dice_com_job_us_sample').find();
+//         cursor.forEach(function(doc, err){
+//             assert.equal(null, err);
+//             resultArray.push(doc);
+//         }, function(){
+//             db.close();
+//             res.render('index', {items: resultArray});
+//         });
+//     });
+// });
+
+
+// //morgan --> HTTP request logger.
+// app.use( morgan('tiny'));
+
+
+// //Routes
+// app.get('/api/name', (req, res)=>{
+//     const data = {
+//         username:'GauravPatel',
+//         age:21
+//     };
+//     res.json(data);
+// });
+// app.get('/api', (req, res)=>{
+//     const data = {
+//         username:'HarishPareek',
+//         age:21
+//     };
+//     res.json(data);
+// });
+
+// app.listen(PORT, console.log(`Server is starting at ${PORT}`));
+
+//.ENV file
+// const dotEnv = require('dotenv');
+
+// const MongoClient = require('mongodb').MongoClient;
+
+// const URL = 'mongodb://localhost:27017/';
+// const MONGODB_URI = 'mongodb+srv://gauravpatel:Gauravpatel$512@cluster0.ddtgt.mongodb.net/Final_Year_Project?retryWrites=true&w=majority';
+
+// dotEnv.config({path: '../config.env'});
+
+// MongoClient.connect(MONGODB_URI, function(err, db){
+//     if(err) throw err;
+
+//     var dbo = db.db('Final_Year_Project');
+//     dbo.collection('dice_com_job_us_sample').findOne({}, function(err , result){
+//         if(err) throw err;
+
+//         console.log(result.company);
+//         db.close();
+//     });
+// });
+
+// MongoClient.connect(URL, function(err, db){
+//     if(err) throw err;
+    
+//     var dbo = db.db('Final_Year_Project');
+//     dbo.collection('dice_com_job_us_sample').find({}).toArray(function(err, result){
+//         if(err) throw err;
+//         // console.log(result);
+//         DiceComeData = result
+//         console.log(DiceComeData)
+        
+//         db.close();
+//     });
+    
+// }); 
