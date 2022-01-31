@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 //Database Connection
 require("../db/connection");
 //userRegister 
@@ -51,11 +52,15 @@ router.post('/register', async (req, res) =>{
         if(userExist){
             return res.status(422).json({ error: "Email already Exist"});
         }
+        else if( password != confirmPassword){
+            return res.status(422).json({ error: "password not matching"});
+        }
+        else{
+            const user = new UserRegister({ name, email, password, confirmPassword });
+            await user.save();
+            res.status(201).json({message: "User Registered Successfuly"});
+        }
     
-        const user = new UserRegister({ name, email, password, confirmPassword });
-
-        await user.save();
-        res.status(201).json({message: "User Registered Successfuly"});
         
     } catch(err){
         console.log(err);
@@ -72,13 +77,24 @@ router.post('/signin', async (req, res)=>{
         }
 
         const userLogin = await UserRegister.findOne({ email: email});
-        console.log(userLogin);
+        // console.log(userLogin);
 
-        if(!userLogin){
-            res.status(400).json({ error:"User error" });
+        if(userLogin){
+            const passMatch = await bcrypt.compare( password, userLogin.password);
+            
+            // User Token
+            const token = await userLogin.generateAuthToken();
+            
+
+            if(!passMatch){
+                res.status(400).json({ error:"Invalid Credentials" });
+            }else{
+                res.json({ message:"User SignedIn Successfully" });
+            }
         }else{
-            res.json({ message:"User SignedIn Successfully" });
+            res.status(400).json({ error:"Invalid Credentials" });
         }
+
 
     }catch(err){
         console.log(err);
