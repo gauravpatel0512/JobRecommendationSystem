@@ -22,14 +22,10 @@ app.use(express.json());
 //     next();
 // }
 
-//Company
-// const company = require('./model/companySchema');
+
 // Link the router files
 app.use(require("./route/auth"));
 
-// app.get('/', (req, res)=>{
-//     res.send('Server is Up!')
-// });
 
 //Dashboard
 app.use(require("./route/dashboard"));
@@ -40,6 +36,8 @@ app.use(require("./route/dashboard"));
 // 	console.log("Resume is Up!");
 // 	res.send("Hello Resume world from the Server");
 // });
+
+
 
 app.listen(PORT, () => {
 	console.log(`Server is running at port number ${PORT}`);
