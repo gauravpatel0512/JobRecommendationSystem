@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Grid from "./Grid";
 // import { Wrapper, Content } from "./Dashboard.styles";
@@ -10,13 +10,10 @@ import CardPageVisits from "components/Cards/CardPageVisits.js";
 import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
 
 export default function Dashboard() {
+	const [dashboardData, setDashboardData] = useState("");
 	return (
-		<div className=" pt-48">
-			<div className="flex flex-wrap">
-				<div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-					<CardData />
-				</div>
-			</div>
+		<div className=" pt-32 xl:w-8/12 mb-12 ">
+			<CardData />
 		</div>
 
 		// <div className=" pt-48">
