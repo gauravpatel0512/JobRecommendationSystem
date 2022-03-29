@@ -8,9 +8,19 @@ require("../db/connection");
 //Schema
 const DashboardSchema = require("../model/companySchema");
 
-router.get("/dashboard/:jobId", async (req, res, next) => {
+// router.get("/dashboard/:jobId", async (req, res, next) => {
+// 	try {
+// 		const data = await DashboardSchema.findOne({ jobId: req.params.jobId });
+// 		res.send(data);
+// 		console.log("Job Post found");
+// 	} catch {
+// 		res.status(404);
+// 		res.send({ error: "Job post doesn't exist!" });
+// 	}
+// });
+router.get("/dashboard", async (req, res, next) => {
 	try {
-		const data = await DashboardSchema.findOne({ jobId: req.params.jobId });
+		const data = await DashboardSchema.find();
 		res.send(data);
 		console.log("Job Post found");
 	} catch {
