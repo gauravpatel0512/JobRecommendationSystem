@@ -9,7 +9,7 @@ Original file is located at
 
 from sklearn.feature_extraction.text import TfidfVectorizer  # new
 from sklearn.metrics.pairwise import linear_kernel  # new
-import seaborn as sns
+# import seaborn as sns
 from sklearn.metrics.pairwise import linear_kernel
 import pandas as pd
 from glob import glob
@@ -18,22 +18,22 @@ import plotly.offline as py
 from plotly.offline import init_notebook_mode, iplot
 from sklearn import preprocessing
 import plotly.graph_objs as go
-import squarify
+# import squarify
 import pandas as pd  # data processing, CSV file I/O (e.g. pd.read_csv)
 import numpy as np  # linear algebra
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
-import nltk
-from nltk.corpus import stopwords
-import re
+# import os
+# import nltk
+# from nltk.corpus import stopwords
+# import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
-import json
-from os import listdir
-import glob
-from scipy import spatial
+# import json
+# from os import listdir
+# import glob
+# from scipy import spatial
 
 # Commented out IPython magic to ensure Python compatibility.
 # This Python 3 environment comes with many helpful analytics libraries installed
@@ -65,7 +65,7 @@ kdf = pd.read_csv(r"./multipleChoiceResponses.csv",
 
 tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3),
                      min_df=0, stop_words='english')
-tfidf_matrix = tf.fit_transform(ddf['jobdescription'])
+tfidf_matrix = tf.fit_transform(ddf['description'])
 # print(tfidf_matrix)
 
 # cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
@@ -113,7 +113,7 @@ ds = pd.read_csv(r"./dice_com-job_us_sample.csv")
 
 tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3),
                      min_df=0, stop_words='english')
-tfidf_matrix = tf.fit_transform(ds['jobdescription'])
+tfidf_matrix = tf.fit_transform(ds['description'])
 
 cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
 
@@ -132,7 +132,7 @@ for idx, row in ds.iterrows():
 
 
 def item(id):
-    return ds.loc[ds['id'] == id]['jobtitle']
+    return ds.loc[ds['id'] == id]['jobTitle']
 
 
 def content_based(item_id, num):
