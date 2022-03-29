@@ -1,27 +1,42 @@
 import React from "react";
 import Chart from "chart.js";
 
-export default function CardData() {
+export default function CardData(props) {
 	return (
 		<>
-			<div className="shadow-lg hover:shadow-2xl p-0 text-white relative flex flex-col w-950-px h-160-px grid  mb-6 rounded bg-blueGray-700">
-				<div className="m-4 mt-3  text-2xl">Centizen</div>
-				<div className="m-6 mt--3">
-					Centizen Inc, Global agile IT solutions and consulting firm focused in
-					delivering scalabl solutions to address ...
+			{/* <div className="shadow-lg hover:shadow-2xl p-0 text-white relative flex flex-col w-950-px h-110-px grid  mb-6 rounded bg-blueGray-700">
+				<div className="m-4 mt-3  text-2xl">Company Name</div>
+				<div className="m-6 mt--3">{props.job.description}</div>
+
+				<div className="m-6">USA</div>
+				<div className="m-12-rem mt--3-rem">FULL TIME</div>
+				<div className="m-10-rem mt--12-rem pl-15-rem ">
+					<button className=" bg-lightBlue-500  text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+						Job Description
+					</button>
+					<button className=" bg-lightBlue-500  text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+						Company URL
+					</button>
+					<button className=" bg-lightBlue-500  text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+						Career URL
+					</button>
 				</div>
-				<div>
-					<div className="m-6">Trenton, NJ, USA</div>
-					<div className="m-10-rem mt--3-rem">Full-time</div>
+			</div> */}
+			<div className="shadow-lg hover:shadow-2xl p-0 text-white relative flex flex-col w-950-px h-160-px grid  mb-6 rounded bg-blueGray-700">
+				<div className="m-4 mt-3  text-2xl">{props.job.companyName}</div>
+
+				<div className="flex flex-col">
+					<div className="m-6">{props.job.location}</div>
+					<div className="m-12-rem mt--3-rem">{props.job.jobType}</div>
 					<div className="m-10-rem mt--12-rem pl-15-rem ">
 						<button className=" bg-lightBlue-500  text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
-							Company URL
+							Job Description
 						</button>
 						<button className=" bg-lightBlue-500  text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
-							Career URL
+							<a href={props.job.companyUrl}>Company URL</a>
 						</button>
 						<button className=" bg-lightBlue-500  text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
-							Send Email
+							<a href={props.job.careerUrl}>Career URL</a>
 						</button>
 					</div>
 				</div>
