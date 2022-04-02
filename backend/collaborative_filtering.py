@@ -34,7 +34,7 @@ cbf = pd.DataFrame(df1['Respondent'])
 start = time.time()
 for i in range(98855):
     r = random.randint(1, 4291)
-    cbf.loc[i, "companyName"] = l[r]
+    cbf.loc[i, "company"] = l[r]
 end = time.time()
 # print(end-start)
 # print(cbf.head())
@@ -127,7 +127,7 @@ def collaborative_filtering(candidate):
     global sim
     # Recommend user 3 a job based on another user who has almost the same skill as him.
     print("Respondent {} is working in ".format(candidate))
-    print(dfjob.loc[dfjob.Respondent == candidate]["companyName"].values)
+    print(dfjob.loc[dfjob.Respondent == candidate]["company"].values)
 
     m1 = max(sim[candidate][:3])
     m2 = max(sim[candidate][4:])
@@ -135,7 +135,7 @@ def collaborative_filtering(candidate):
     suser = sim[candidate].index(ma)
     # print(suser) #user 3265 is very similar to user 3 and hence we can recommend user 3265 job to user 3.
     print("Respondent ", suser, "is working in")
-    print(dfjob.loc[dfjob.Respondent == suser]["companyName"].values)
+    print(dfjob.loc[dfjob.Respondent == suser]["company"].values)
 
     # For buiding  collaborative filtering based on The Content based recommendations for the first 200 Respondents.
     dfcont = pd.read_csv("./recommendations.csv")
@@ -165,9 +165,9 @@ def collaborative_filtering(candidate):
 
     # Recommend user 3 a job based on another user who has almost the same skill as him.
     print("Respondent 3 was recommended jobs from content based filtering in ")
-    print(dfcont.loc[dfcont.Respondent == candidate]["companyName"].values)
+    print(dfcont.loc[dfcont.Respondent == candidate]["company"].values)
     print("Respondent 3 was recommended job titles from content based filtering ")
-    print(dfcont.loc[dfcont.Respondent == candidate]["jobTitle"].values)
+    print(dfcont.loc[dfcont.Respondent == candidate]["jobtitle"].values)
     print("\n")
     m1 = max(sim[candidate][:3])
     m2 = max(sim[candidate][4:])
@@ -176,7 +176,7 @@ def collaborative_filtering(candidate):
     # print(suser) #user 3265 is very similar to user 3 and hence we can recommend user 3265 job to user 3.
     print("Respondent ", suser, "was most similiar to respondent 3\n")
     print("Based on respondent ", suser, " the jobs recommended to 3 are ")
-    print(dfcont.loc[dfcont.Respondent == suser]["companyName"].values)
+    print(dfcont.loc[dfcont.Respondent == suser]["company"].values)
     print("The recommended job titles are ")
-    print(dfcont.loc[dfcont.Respondent == suser]["jobTitle"].values)
-    return {"companies": dfcont.loc[dfcont.Respondent == suser]["companyName"].values.tolist(), "titles": dfcont.loc[dfcont.Respondent == suser]["jobTitle"].values.tolist()}
+    print(dfcont.loc[dfcont.Respondent == suser]["jobtitle"].values)
+    return {"companies": dfcont.loc[dfcont.Respondent == suser]["company"].values.tolist(), "titles": dfcont.loc[dfcont.Respondent == suser]["jobtitle"].values.tolist()}
